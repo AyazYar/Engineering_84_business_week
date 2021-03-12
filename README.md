@@ -30,4 +30,4 @@
 ## What is DevOps and the benefits of using it?
 ### DevOps is the mix between IT development and Operations. Engineers will take provide coded solutions and overlook the implementation of solutions to ensure efficiency and all needs have been met.
 ### The mix of the two professions maximises the speed and efficiency of solutions while having constant improvement of products.
-### The efficiency comes from communication being the 
+### The efficiency comes from fewer communication barriers and workflow efficiencies.
