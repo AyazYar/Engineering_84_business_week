@@ -1,0 +1,32 @@
+
+NULL is Undefined,
+Concat(first, second)
+Alias used like a renaming for simplicity which is deleted after the query is over
+WHERE x IS NULL
+
+Coding Examples using Northwind Table
+
+SELECT UnitPrice, Quantity, Discount, UnitPrice * Quantity AS "Gross Total" FROM [Order Details]
+SELECT UnitPrice, Quantity,Discount,UnitPrice *Quantity AS "GrossTotal" FROM [Order Details]
+ORDER BY "Gross Total" DESC
+
+Editing strings and special characters:
+SELECT film_name, CHARINDEX('s', film_name) AS "Position of Character" FROM film_table ; -- Returns the index number of the first instance of the letter highlighted
+SELECT film_name, SUBSTRING(film_name, 2, 3) AS "Extracted String" FROM film_table -- Prints 3 characters after and including the second value
+SELECT film_name, RIGHT(film_name, 2) AS "Extracted String" FROM film_table -- Last two from the right
+SELECT film_name, LEFT(film_name, 2) AS "Extracted String" FROM film_table -- First two characters from the left
+SELECT film_name, RTRIM(film_name) AS "Trimmed String" FROM film_table -- Trimmed white space from the right
+SELECT film_name, LTRIM(film_name) AS "Trimmed String" FROM film_table -- Trimmed white spaces from the left
+SELECT film_name, TRIM(film_name) AS "Trimmed String" FROM film_table -- Trim from both ends
+SELECT film_name, REPLACE(film_name,' ','A') AS "Replaced String" FROM film_table -- Replace
+SELECT film_name, LEN(film_name) AS "LENGTH of String" FROM film_table -- Returns the length of the string
+SELECT film_name, UPPER(film_name) AS "Uppercase String", LOWER(film_name) AS "Lowercase String" FROM film_table -- Changing upper and lower cases
+
+Example from Northwind
+SELECT PostalCode, LEFT(PostalCode, CHARINDEX('',PostalCode-1 AS "Postal Code Region", CHARINDEX('', PostalCode) AS "Space Found", Country FROM Customers WHERE Country = 'UK'
+
+DATES:
+SELECT CASE WHEN DATEDIFF (d,OrderDate,ShippedDate)<10 THEN 'On Time'
+ELSE 'Overdue' END AS "Status" FROM Orders
+
+	--Sinfle quotes for data and double quotes for column aliases
