@@ -1,0 +1,46 @@
+Inner Join - Retruns those records which have matching values in both tables. 
+Left Join - Returns all the records from the left table and also those records which satisfy a condition from the right table
+Right join - returns all the records from the right table and also those records which satisfy a condition from the left table
+Full join - full join returns all those records which either have a match in the left table or the right table
+
+
+
+
+Hard code:
+
+SELECT Customers.CompanyName, CONCAT(Employees.FirstName,' ',Employees.LastName), Orders.OrderID, FORMAT(Orders.OrderDate,'dd/MM/yy'), Orders.Freight
+FROM Orders
+INNER JOIN Customers  ON Orders.CustomerID = Customers.CustomerID
+INNER JOIN Employees  ON Orders.EmployeeID = Employees.EmployeeID
+
+
+select CompanyName as "Customer"
+from Customers
+where CustomerID NOT IN
+(select CustomerID from Orders)
+
+select CompanyName as "Customers" from Customers
+full join Orders on Customers.CustomerID = Orders.CustomerID
+where Orders.CustomerID is NULL
+
+select OrderID, ProductID, UnitPrice,Quantity,Discount, (select max(UnitPrice) from [Order Details] od) as "Max Price"
+from [Order Details]
+
+
+select od.ProductID, sq1.totalamt as "Total Sold for this Product", UnitPrice, (UnitPrice/totalamt*100) as "% of Total"
+from [Order Details] od
+inner join
+(select ProductID, sum(UnitPrice*Quantity) as totalamt From [Order Details]
+group by ProductID) sq1 ON sq1.ProductID= od.ProductID
+
+
+select ProductID, UnitPrice, Quantity, Discount from [Order Details] od
+where od.ProductID in 
+(select Products.ProductID from Products where Discontinued = '1' )
+
+SELECT OrderID, p.ProductID, od.UnitPrice, Quantity, Discount FROM [Order Details] od
+INNER JOIN [Products] p ON p.ProductID = od.ProductID 
+WHERE p.Discontinued = 1
+
+select EmployeeID as "Employee/Supplier" from Employees
+union all select SupplierID from Suppliers
